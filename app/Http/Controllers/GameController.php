@@ -10,6 +10,13 @@ use Validator;
 class GameController extends Controller
 {
 
+    public function index() {
+        $data['games'] = Game::all();
+        $data['users'] = User::all()->keyBy('id');
+
+        return view('games.index', $data);
+    }
+
     public function create() {
 
         $data['users'] = User::all();
