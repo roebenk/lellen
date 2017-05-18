@@ -18,7 +18,7 @@ class Game extends Model {
         $game = new Game();
         $game->player_a1_id = $player_a1;
         $game->player_a2_id = $player_a2;
-        $game->player_b1_id = $player_a1;
+        $game->player_b1_id = $player_b1;
         $game->player_b2_id = $player_b2;
 
         $game->player_a1_rating = $players['a1']->rating;
