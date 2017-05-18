@@ -13,7 +13,7 @@
 
 Auth::routes();
 
-Route::get('/', function() {
-	return redirect('/home');
+Route::group(['middleware' => 'auth'], function() {
+	Route::get('/', 'HomeController@index');
+	Route::resource('games', 'GameController', ['only' => ['create', 'store']]);
 });
-Route::get('/home', 'HomeController@index')->name('home');
