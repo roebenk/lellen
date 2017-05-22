@@ -12,7 +12,7 @@ class GameController extends Controller
 {
 
     public function index() {
-        $data['games'] = Game::all();
+        $data['games'] = Game::orderBy('created_at', 'desc')->paginate(15);
         $data['users'] = User::all()->keyBy('id');
 
         return view('games.index', $data);

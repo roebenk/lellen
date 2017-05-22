@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
+                <div class="panel-heading">Rankings</div>
 
                 <div class="panel-body">
                 
@@ -22,7 +22,7 @@
                                         <th class="text-center"><h6>L</h6></th>
                                         <th class="text-center"><h6>F</h6></th>
                                         <th class="text-center"><h6>A</h6></th>
-                                        <th class="text-center"><h6>D</h6></th>
+                                        <th class="text-center"><h6>GD</h6></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -49,7 +49,7 @@
                                         <th class="text-center"><h6>L</h6></th>
                                         <th class="text-center"><h6>F</h6></th>
                                         <th class="text-center"><h6>A</h6></th>
-                                        <th class="text-center"><h6>D</h6></th>
+                                        <th class="text-center"><h6>GD</h6></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -76,7 +76,7 @@
                                         <th class="text-center"><h6>L</h6></th>
                                         <th class="text-center"><h6>F</h6></th>
                                         <th class="text-center"><h6>A</h6></th>
-                                        <th class="text-center"><h6>D</h6></th>
+                                        <th class="text-center"><h6>GD</h6></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -101,11 +101,11 @@
                                     <th>Name</th>
                                     <th>Rating</th>
                                     <th>ELO Rating</th>
-                                    <th>Wins</th>
-                                    <th>Losses</th>
-                                    <th>For</th>
-                                    <th>Against</th>
-                                    <th>Difference</th>
+                                    <th>W</th>
+                                    <th>L</th>
+                                    <th>F</th>
+                                    <th>A</th>
+                                    <th>GD</th>
                                 </tr>
                             </thead>
 

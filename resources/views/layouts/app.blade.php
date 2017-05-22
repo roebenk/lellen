@@ -29,7 +29,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <span>KPMG</span> Cyber Lellen competitie 
+                        <span>KPMG</span> Cyber Lellen.nl
                     </a>
                 </div>
 
