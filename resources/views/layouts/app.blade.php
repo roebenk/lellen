@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>KPMG Cyber | Lellen competitie</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -29,7 +29,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        <span>KPMG</span> Cyber Lellen competitie 
                     </a>
                 </div>
 
@@ -76,6 +76,7 @@
         </nav>
 
         @yield('content')
+		
     </div>
 
     <!-- Scripts -->
