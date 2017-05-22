@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Game;
 use Validator;
+use Auth;
 
 class GameController extends Controller
 {
@@ -55,7 +56,7 @@ class GameController extends Controller
                         ->withInput();
         }
 
-        Game::addGame($players[0], $players[1], $players[2], $players[3], $request->get('score_a'), $request->get('score_b'));
+        Game::addGame(Auth::user()->id, $players[0], $players[1], $players[2], $players[3], $request->get('score_a'), $request->get('score_b'));
 
         return redirect('/');
 

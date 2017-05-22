@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model {
     
-    public static function addGame($player_a1, $player_a2, $player_b1, $player_b2, $score_a, $score_b) {
+    public static function addGame($created_by, $player_a1, $player_a2, $player_b1, $player_b2, $score_a, $score_b) {
 
 
         $players['a1']  = User::findOrFail($player_a1);
@@ -16,6 +16,8 @@ class Game extends Model {
         $players['b2']  = User::findOrFail($player_b2);
 
         $game = new Game();
+        $game->created_by_user_id = $created_by;
+        
         $game->player_a1_id = $player_a1;
         $game->player_a2_id = $player_a2;
         $game->player_b1_id = $player_b1;
@@ -58,6 +60,7 @@ class Game extends Model {
                 $against    = $score_a;
             }
             $player->calculateRating($teammate, $opponent_1, $opponent_2, $for, $against);
+            $player->processGame($for, $against);
         }
 
     }

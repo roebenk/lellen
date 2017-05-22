@@ -12,11 +12,11 @@
 }
  @font-face {
     font-family: "KPMG";
-    src: url('../fonts/KPMG-Light 151009.TTF');
+    src: url('../fonts/kpmglight.ttf');
 }
  @font-face {
     font-family: "KPMG_ITALIC";
-    src: url('../fonts/KPMG-Light Italic 151009.TTF');
+    src: url('../fonts/kpmglightitalic.ttf');
 }
 
 body {

@@ -46,7 +46,7 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li><a href="{{ url('/') }}">Rankings</a></li>
+                            <li><a href="{{ url('/users') }}">Rankings</a></li>
                             <li><a href="{{ url('/games/create') }}">Add game</a></li>
                             <li><a href="{{ url('/games') }}">Game history</a></li>
 
@@ -57,6 +57,7 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
+                                        <a href="{{ url('users/' . Auth::user()->id . '/edit') }}">Edit profile</a>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

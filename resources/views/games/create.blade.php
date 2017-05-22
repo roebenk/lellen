@@ -35,7 +35,7 @@
 						</div>
 						<div class="form-group">
 
-							<label class="control-label col-sm-3" for="email">Team 2 Player 2:</label>
+							<label class="control-label col-sm-3" for="email">Team 1 Player 2:</label>
 							<div class="col-sm-9">
 								<select name="player_a2" class="form-control">
 									<option value="-1"></option>

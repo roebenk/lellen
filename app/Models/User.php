@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use DB;
 
 class User extends Authenticatable
 {
     use Notifiable;
+
 
     /**
      * The attributes that are mass assignable.
@@ -27,6 +29,38 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function getGoalsDifference() {
+        return $this->goals_for - $this->goals_against;
+    }
+
+    public function games($limit = 10) {
+
+        return Game::where('player_a1_id', $this->id)
+                    ->orWhere('player_a2_id', $this->id)
+                    ->orWhere('player_b1_id', $this->id)
+                    ->orWhere('player_b2_id', $this->id)
+                    ->orderBy('created_at', 'desc')
+                    ->limit($limit)
+                    ->get();
+
+
+
+    }
+
+    public function processGame($for, $against) {
+
+        $this->goals_for += $for;
+        $this->goals_against += $against;
+
+        if($for > $against) {
+            $this->wins++;
+        } else {
+            $this->losses++;
+        }
+
+        $this->save();
+
+    }
 
     public function calculateRating($teammate, $opponent_1, $opponent_2, $for, $against) {
 
