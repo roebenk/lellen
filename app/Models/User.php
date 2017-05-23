@@ -115,17 +115,6 @@ class User extends Authenticatable
 
         $diffRating     = $newRating * 2 - $currentRating * 2;
 
-        var_dump($diffRating);
-        var_dump($for);
-        var_dump($against);
-        var_dump($win);
-        var_dump($diff);
-        var_dump($expectedW);
-        var_dump($this->name);
-        var_dump($this->elo_rating);
-        var_dump($teammate->name);
-        var_dump($teammate->elo_rating);
-
         //exit;
 
         if($win == 1) {

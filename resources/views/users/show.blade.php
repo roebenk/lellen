@@ -27,15 +27,11 @@
 		                		<td>{{ $user->email }}</td>
 		                	</tr>
 		                	<tr>
-		                		<th>Rating</th>
-		                		<td>{{ $user->rating }}</td>
-		                	</tr>
-		                	<tr>
 		                		<th>ELO Rating</th>
 		                		<td>{{ $user->elo_rating }}</td>
 		                	</tr>
 		                	<tr>
-		                		<th>Games plyed</th>
+		                		<th>Games played</th>
 		                		<td>{{ $user->wins + $user->losses }}</td>
 		                	</tr>
 		                	<tr>
