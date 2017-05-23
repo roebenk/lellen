@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Mail;
 
 class HomeController extends Controller
 {
@@ -40,4 +41,9 @@ class HomeController extends Controller
 
         return view('home', $data);
     }
+
+    public function test() {
+        return redirect('/users')->with('flashmessage', ['message' => 'test', 'class' => 'danger']);
+    }
+
 }

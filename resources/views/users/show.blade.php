@@ -16,40 +16,77 @@
 	                <div class="panel-heading">User info</div>
 	                <div class="panel-body">
 
+	                	<table class="table table-striped table-condensed">
 
-		                	
-	                	<h2>Info</h2>
-	                	<pre>
-	                	{{ print_r($user) }}
-	                	</pre>
+		                	<tr>
+		                		<th>Name</th>
+		                		<td>{{ $user->name }}</td>
+		                	</tr>
+		                	<tr>
+		                		<th>Email</th>
+		                		<td>{{ $user->email }}</td>
+		                	</tr>
+		                	<tr>
+		                		<th>Rating</th>
+		                		<td>{{ $user->rating }}</td>
+		                	</tr>
+		                	<tr>
+		                		<th>ELO Rating</th>
+		                		<td>{{ $user->elo_rating }}</td>
+		                	</tr>
+		                	<tr>
+		                		<th>Games plyed</th>
+		                		<td>{{ $user->wins + $user->losses }}</td>
+		                	</tr>
+		                	<tr>
+		                		<th>Wins</th>
+		                		<td>{{ $user->wins }}</td>
+		                	</tr>
+		                	<tr>
+		                		<th>Losses</th>
+		                		<td>{{ $user->losses }}</td>
+		                	</tr>
+		                	<tr>
+		                		<th>Goals scored</th>
+		                		<td>{{ $user->goals_for }}</td>
+		                	</tr>
+		                	<tr>
+		                		<th>Goals conceided</th>
+		                		<td>{{ $user->goals_against }}</td>
+		                	</tr>
+		                	<tr>
+		                		<th>Goal difference</th>
+		                		<td>{{ $user->getGoalsDifference() }}</td>
+		                	</tr>
+
+                		</table>
 	                	<h2>Last 10 games played</h2>
-	                	<table class="table table-striped">
+	                	<div class="table-responsive">
+	                    	<table class="table table-striped table-condensed">
 
-	                        <tr>
-	                            <th>Player 1A</th>
-	                            <th>Player 2A</th>
-	                            <th class="text-right">Score A</th>
-	                            <th class="text-center">-</th>
-	                            <th>Score B</th>
-	                            <th>Player 1B</th>
-	                            <th>Player 2B</th>
-	                            <th>Played on</th>
-	                        </tr>
-	                        <?php $i = 1; ?>
-	                        @foreach($games as $game)
 	                            <tr>
-	                                <td>{{ $users->get($game->player_a1_id)->name }}</td>
-	                                <td>{{ $users->get($game->player_a2_id)->name }}</td>
-	                                <td class="text-right">{{ $game->score_a }}</td>
-	                                <td class="text-center">-</td>
-	                                <td>{{ $game->score_b }}</td>
-	                                <td>{{ $users->get($game->player_b1_id)->name }}</td>
-	                                <td>{{ $users->get($game->player_b2_id)->name }}</td>
-	                                <td>{{ $game->created_at->format('d-m-Y \a\t H:i') }}</td>
+	                                <th class="text-right">Team 1</th>
+	                                <th class="text-right">&nbsp;</th>
+	                                <th class="text-center">-</th>
+	                                <th>&nbsp;</th>
+	                                <th>Team 2</th>
+	                                <th>Played on</th>
 	                            </tr>
-	                        @endforeach
+	                            <?php $i = 1; ?>
+	                            @foreach($games as $game)
+	                            <?php // var_dump($game); continue; ?>
+	                                <tr>
+	                                    <td class="text-right"><a href="{{ url('users/' . $game->player_a1_id ) }}">{{ $users->get($game->player_a1_id)->name }}</a> &amp; <a href="{{ url('users/' . $game->player_a2_id ) }}">{{ $users->get($game->player_a2_id)->name }}</a></td>
+	                                    <td class="text-right">{{ $game->score_a }}</td>
+	                                    <td class="text-center">-</td>
+	                                    <td>{{ $game->score_b }}</td>
+	                                    <td><a href="{{ url('users/' . $game->player_b1_id ) }}">{{ $users->get($game->player_b1_id)->name }}</a> &amp; <a href="{{ url('users/' . $game->player_b2_id ) }}">{{ $users->get($game->player_b2_id)->name }}</a></td>
+	                                    <td>{{ $game->created_at->format('d-m-Y \a\t H:i') }}</td>
+	                                </tr>
+	                            @endforeach
 
-	                    </table>
+	                        </table>
+	                    </div>
 
 	                </div>
 	            </div>

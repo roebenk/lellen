@@ -19,4 +19,6 @@ Route::group(['middleware' => 'auth'], function() {
 	});
 	Route::resource('games', 'GameController', ['only' => ['index', 'create', 'store']]);
 	Route::resource('users', 'UserController', ['only' => ['index', 'show', 'edit', 'update']]);
+
+	Route::get('test', 'HomeController@test');
 });

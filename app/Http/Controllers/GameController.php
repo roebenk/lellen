@@ -58,7 +58,7 @@ class GameController extends Controller
 
         Game::addGame(Auth::user()->id, $players[0], $players[1], $players[2], $players[3], $request->get('score_a'), $request->get('score_b'));
 
-        return redirect('/');
+        return redirect('/users')->with('flashmessage', ['message' => 'Game successfully added.', 'class' => 'success']);
 
     }
 

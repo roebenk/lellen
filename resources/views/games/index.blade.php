@@ -22,11 +22,11 @@
                             <?php $i = 1; ?>
                             @foreach($games as $game)
                                 <tr>
-                                    <td class="text-right">{{ $users->get($game->player_a1_id)->name }} &amp; {{ $users->get($game->player_a2_id)->name }}</td>
+                                    <td class="text-right"><a href="{{ url('users/' . $game->player_a1_id ) }}">{{ $users->get($game->player_a1_id)->name }}</a> &amp; <a href="{{ url('users/' . $game->player_a2_id ) }}">{{ $users->get($game->player_a2_id)->name }}</a></td>
                                     <td class="text-right">{{ $game->score_a }}</td>
                                     <td class="text-center">-</td>
                                     <td>{{ $game->score_b }}</td>
-                                    <td>{{ $users->get($game->player_b1_id)->name }} &amp; {{ $users->get($game->player_b2_id)->name }}</td>
+                                    <td><a href="{{ url('users/' . $game->player_b1_id ) }}">{{ $users->get($game->player_b1_id)->name }}</a> &amp; <a href="{{ url('users/' . $game->player_b2_id ) }}">{{ $users->get($game->player_b2_id)->name }}</a></td>
                                     <td>{{ $game->created_at->format('d-m-Y \a\t H:i') }}</td>
                                 </tr>
                             @endforeach

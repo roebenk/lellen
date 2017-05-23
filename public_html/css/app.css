@@ -19,9 +19,16 @@
     src: url('../fonts/kpmglightitalic.ttf');
 }
 
+html {
+	width: 100%;
+	height: 100%;
+}
+
 body {
 	background: url('../img/bg.png') no-repeat;
 	background-size: cover;
+	height: 100%;
+	width: 100%;
 }
 
 .navbar {

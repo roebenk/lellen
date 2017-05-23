@@ -27,9 +27,11 @@ class UserController extends Controller
             $data['games'] = $games;
         }
 
-        $data['users'] = User::all();
+ 
+        $data['users'] = User::all()->keyBy('id');
         $data['user'] = $user;
-
+        //var_dump($games);
+        //exit;
         return view('users.show', $data);
 
     }
