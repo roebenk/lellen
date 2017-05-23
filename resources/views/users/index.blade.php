@@ -14,7 +14,7 @@
                         <div class="col-xs-4 stage" style="margin-top: 30px;">
                             <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/17241-200.png" alt="..." class="img-circle">
                             <h1><a href="{{ url('users/' . $users[1]->id ) }}">{{ $users[1]->name  }}</a></h1>
-                            <h2>{{ $users[1]->rating }} / {{ $users[1]->elo_rating }}<h2>
+                            <h2>{{ $users[1]->rating }} - {{ $users[1]->elo_rating }}<h2>
                             <table class="table table-condensed">
                                 <thead>
                                     <tr>
@@ -41,7 +41,7 @@
                         <div class="col-xs-4 stage">
                             <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/17241-200.png" alt="..." class="img-circle">
                             <h1><a href="{{ url('users/' . $users[0]->id ) }}">{{ $users[0]->name  }}</a></h1>
-                            <h2>{{ $users[0]->rating }} / {{ $users[0]->elo_rating }}<h2>
+                            <h2>{{ $users[0]->rating }} - {{ $users[0]->elo_rating }}<h2>
                             <table class="table table-condensed">
                                 <thead>
                                     <tr>
@@ -68,7 +68,7 @@
                         <div class="col-xs-4 stage" style="margin-top: 60px;">
                             <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/17241-200.png" alt="..." class="img-circle">
                             <h1><a href="{{ url('users/' . $users[2]->id ) }}">{{ $users[2]->name  }}</a></h1>
-                            <h2>{{ $users[2]->rating }} / {{ $users[2]->elo_rating }}<h2>
+                            <h2>{{ $users[2]->rating }} - {{ $users[2]->elo_rating }}<h2>
                             <table class="table table-condensed">
                                 <thead>
                                     <tr>
