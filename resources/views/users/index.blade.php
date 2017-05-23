@@ -41,7 +41,7 @@
                         <div class="col-xs-4 stage">
                             <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/17241-200.png" alt="..." class="img-circle">
                             <h1><a href="{{ url('users/' . $users[0]->id ) }}">{{ $users[0]->name  }}</a></h1>
-                            <h2>{ $users[0]->elo_rating }}<h2>
+                            <h2>{{ $users[0]->elo_rating }}<h2>
                             <table class="table table-condensed">
                                 <thead>
                                     <tr>
@@ -99,7 +99,6 @@
                                 <tr>
                                     <th style="width: 30px">#</th>
                                     <th>Name</th>
-                                    <th>Rating</th>
                                     <th>ELO Rating</th>
                                     <th>W</th>
                                     <th>L</th>
