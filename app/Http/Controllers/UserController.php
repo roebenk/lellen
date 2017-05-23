@@ -12,7 +12,7 @@ class UserController extends Controller
 {
 
     public function index() {
-        $data['users'] = User::orderBy('rating', 'desc')->paginate(20);
+        $data['users'] = User::orderBy('elo_rating', 'desc')->paginate(20);
 
         return view('users.index', $data);
 
