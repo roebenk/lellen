@@ -19,6 +19,13 @@
                                 <th>Team 2</th>
                                 <th>Played on</th>
                             </tr>
+
+                            @if(count($games) == 0) 
+                                <tr>
+                                    <td colspan="6" class="text-center"><em>No games played yet</em></td>
+                                </tr>
+                            @endif
+
                             <?php $i = 1; ?>
                             @foreach($games as $game)
                                 <tr>

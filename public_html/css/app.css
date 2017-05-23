@@ -8,7 +8,7 @@
  
  @font-face {
     font-family: "KPMG_LOGO";
-    src: url('../fonts/KPMGLOGO1.TTF');
+    src: url('../fonts/kpmglogo.ttf');
 }
  @font-face {
     font-family: "KPMG";
@@ -42,6 +42,7 @@ body {
 
 .navbar-brand span {
 	font-family: "KPMG";
+	color: #275BAE;
 }
 
 .navbar-static-top {
