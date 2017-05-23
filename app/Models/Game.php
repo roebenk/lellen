@@ -23,10 +23,10 @@ class Game extends Model {
         $game->player_b1_id = $player_b1;
         $game->player_b2_id = $player_b2;
 
-        $game->player_a1_rating = $players['a1']->rating;
-        $game->player_a2_rating = $players['a2']->rating;
-        $game->player_b1_rating = $players['b1']->rating;
-        $game->player_b2_rating = $players['b2']->rating;
+        $game->player_a1_rating = $players['a1']->elo_rating;
+        $game->player_a2_rating = $players['a2']->elo_rating;
+        $game->player_b1_rating = $players['b1']->elo_rating;
+        $game->player_b2_rating = $players['b2']->elo_rating;
 
         $game->score_a      = $score_a;
         $game->score_b      = $score_b;
@@ -61,6 +61,10 @@ class Game extends Model {
             }
             $player->calculateRating($teammate, $opponent_1, $opponent_2, $for, $against);
             $player->processGame($for, $against);
+        }
+
+        foreach($players as $player) {
+            $player->persistEloRating();
         }
 
     }

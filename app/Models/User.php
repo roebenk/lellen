@@ -29,6 +29,8 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public $new_elo_rating;
+
     public function getGoalsDifference() {
         return $this->goals_for - $this->goals_against;
     }
@@ -119,15 +121,18 @@ class User extends Authenticatable
 
         if($win == 1) {
             $toAdd      = ($diffRating * (1 - ($this->elo_rating / ($this->elo_rating + $teammate->elo_rating))));
-            $this->elo_rating = $this->elo_rating + $toAdd;
+            $this->new_elo_rating = $this->elo_rating + $toAdd;
         } elseif($win == 0) {
             $toSub      = ($diffRating * ($this->elo_rating / ($this->elo_rating + $teammate->elo_rating)));
-            $this->elo_rating = $this->elo_rating + $toSub;
+            $this->new_elo_rating = $this->elo_rating + $toSub;
         }
 
+
+    }
+
+    public function persistEloRating() {
+        $this->elo_rating = $this->new_elo_rating;
         $this->save();
-
-
     }
 
 
