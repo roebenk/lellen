@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Mail;
+use App\Models\Game;
+use DB;
 
 class HomeController extends Controller
 {
@@ -43,7 +45,26 @@ class HomeController extends Controller
     }
 
     public function test() {
-        return redirect('/users')->with('flashmessage', ['message' => 'test', 'class' => 'danger']);
+        
+        $games = Game::all();
+
+        DB::update("UPDATE users SET elo_rating = 1000, wins = 0, losses = 0, goals_for = 0, goals_against = 0");
+
+        foreach($games as $game) {
+
+            Game::addGame(
+                $game->created_by_user_id,
+                $game->player_a1_id == -1 ? 'guest' : $game->player_a1_id,
+                $game->player_a2_id == -1 ? 'guest' : $game->player_a2_id,
+                $game->player_b1_id == -1 ? 'guest' : $game->player_b1_id,
+                $game->player_b2_id == -1 ? 'guest' : $game->player_b2_id,
+                $game->score_a,
+                $game->score_b,
+                $game->id
+            );
+        }
+
+
     }
 
 }

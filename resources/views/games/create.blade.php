@@ -27,6 +27,7 @@
 								<div class="form-group">
 									<select name="player_a1" class="form-control">
 										<option value="-1">Select player</option>
+										<option value="guest">Guest player</option>
 										@foreach($users as $user)
 											<option value="{{ $user->id }}">{{ $user->name }}</option>
 										@endforeach
@@ -37,6 +38,7 @@
 
 									<select name="player_a2" class="form-control">
 										<option value="-1">Select player</option>
+										<option value="guest">Guest player</option>
 										@foreach($users as $user)
 											<option value="{{ $user->id }}">{{ $user->name }}</option>
 										@endforeach
@@ -81,6 +83,7 @@
 								<div class="form-group">
 									<select name="player_b1" class="form-control">
 										<option value="-1">Select player</option>
+										<option value="guest">Guest player</option>
 										@foreach($users as $user)
 											<option value="{{ $user->id }}">{{ $user->name }}</option>
 										@endforeach
@@ -91,6 +94,7 @@
 
 									<select name="player_b2" class="form-control">
 										<option value="-1">Select player</option>
+										<option value="guest">Guest player</option>
 										@foreach($users as $user)
 											<option value="{{ $user->id }}">{{ $user->name }}</option>
 										@endforeach

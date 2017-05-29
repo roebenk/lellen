@@ -29,6 +29,8 @@ class UserController extends Controller
 
  
         $data['users'] = User::all()->keyBy('id');
+        $data['users'][-1] = (object) ['name' => 'Guest player'];
+
         $data['user'] = $user;
         //var_dump($games);
         //exit;

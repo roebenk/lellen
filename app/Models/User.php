@@ -66,47 +66,6 @@ class User extends Authenticatable
 
     public function calculateRating($teammate, $opponent_1, $opponent_2, $for, $against) {
 
-        $winPoints = 10;
-        $weightGoalDeficit = 0.2;
-        $goalDeficit = abs($for - $against);
-        $ratingDivider = ($opponent_1->rating + $opponent_2->rating) / ($this->rating + $teammate->rating + $opponent_1->rating + $opponent_2->rating) * 2;
-
-        // Win
-        if($for > $against) {
-
-            $max                = $winPoints * $ratingDivider;
-            $calculatedGoals    = $max - ($max * $weightGoalDeficit * (1 - ($goalDeficit / max($for, $against))) * $ratingDivider);
-            $calucatedRating    = $calculatedGoals - ($calculatedGoals * (1 - ((200 - $this->rating + $teammate->rating) / 200)));
-            $minRating          = max(1, $calucatedRating);
-
-            $toAdd              = max(1, ($minRating * (1 - ($this->rating / ($this->rating + $teammate->rating)))));
-            $this->rating       = min(100, $this->rating + $toAdd);
-
-        } else {
-
-            $losePoints = 10;
-            $weightGoalDeficit = 0.6;
-            $goalDeficit = abs($for - $against);
-            $ratingDivider = ($opponent_1->rating + $opponent_2->rating) / ($this->rating + $teammate->rating + $opponent_1->rating + $opponent_2->rating) * 2;
-
-            $max                = $winPoints * $ratingDivider;
-            $calculatedGoals    = $max - ($max * $weightGoalDeficit * (1 - ($goalDeficit / max($for, $against))) * $ratingDivider);
-            $calucatedRating    = $calculatedGoals - ($calculatedGoals * (1 - (($this->rating + $teammate->rating) / 200)));
-            $minRating          = max(1, $calucatedRating);
-
-            $toSubstract        = min(1, ($minRating * ($this->rating / ($this->rating + $teammate->rating))));
-            $this->rating       = max(1, $this->rating - $toSubstract); 
-
-        }
-
-        $this->save();
-
-        $this->calcualteELORatings($teammate, $opponent_1, $opponent_2, $for, $against);
-
-    }
-
-    public function calcualteELORatings($teammate, $opponent_1, $opponent_2, $for, $against) {
-
         $currentRating  = ($this->elo_rating + $teammate->elo_rating) / 2;
         $constant       = 50;
         $win            = ($for > $against) ? 1 : 0;
