@@ -34,7 +34,7 @@
                                     <td class="text-center">-</td>
                                     <td>{{ $game->score_b }}</td>
                                     <td><a href="{{ url('users/' . $game->player_b1_id ) }}">{{ $users->get($game->player_b1_id)->name }}</a> &amp; <a href="{{ url('users/' . $game->player_b2_id ) }}">{{ $users->get($game->player_b2_id)->name }}</a></td>
-                                    <td>{{ $game->created_at->format('d-m-Y \a\t H:i') }}</td>
+                                    <td>{{ $game->created_at->tz('Europe/Amsterdam')->format('d-m-Y \a\t H:i') }}</td>
                                 </tr>
                             @endforeach
 

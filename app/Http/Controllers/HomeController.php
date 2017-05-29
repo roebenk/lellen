@@ -44,8 +44,9 @@ class HomeController extends Controller
         return view('home', $data);
     }
 
+    // Method for recalculating scores. TODO: Implement nicely
     public function test() {
-        
+        exit;
         $games = Game::all();
 
         DB::update("UPDATE users SET elo_rating = 1000, wins = 0, losses = 0, goals_for = 0, goals_against = 0");

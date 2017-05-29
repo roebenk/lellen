@@ -58,7 +58,7 @@ class UserController extends Controller
         }
 
         $rules =  [
-            'email' => 'required|string|email|max:255|unique:users|regex:/^[A-Za-z0-9\.]*@(kpmg)[.](nl)$/',
+            'email' => 'required|string|email|max:255|unique:users,email,' . Auth::user()->id . '|regex:/^[A-Za-z0-9\.]*@(kpmg)[.](nl)$/',
             'password' => 'string|min:6|confirmed',
         ];
 

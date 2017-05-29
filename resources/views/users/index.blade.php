@@ -99,7 +99,7 @@
                                 <tr>
                                     <th style="width: 30px">#</th>
                                     <th>Name</th>
-                                    <th>ELO Rating</th>
+                                    <th>Rating</th>
                                     <th>W</th>
                                     <th>L</th>
                                     <th>F</th>
