@@ -56,6 +56,10 @@
 		                	</tr>
 
                 		</table>
+
+                		<h2>Rating over time</h2>
+                		<div id="rating_over_time"></div>
+
 	                	<h2>Last 10 games played</h2>
 	                	<div class="table-responsive">
 	                    	<table class="table table-striped table-condensed">
@@ -99,4 +103,38 @@
         </div>
     </div>
 </div>
+
+@endsection
+
+
+@section('extra-scripts')
+<script type="text/javascript">
+  google.charts.load('current', {packages: ['corechart', 'line']});
+	google.charts.setOnLoadCallback(drawChart);
+
+	function drawChart() {
+		var data = new google.visualization.DataTable();
+		data.addColumn('date', 'X');
+		data.addColumn('number', 'Rating');
+
+		data.addRows([
+			@foreach($ratingOverTime as $r)
+				[new Date({{ $r['date']->format('Y') }}, {{ $r['date']->format('m') - 1 }}, {{ $r['date']->format('d') }}), {{ $r['rating'] }}],
+			@endforeach
+		]);
+
+		var options = {
+			hAxis: {
+		  		title: 'Time'
+			},
+			vAxis: {
+		  		title: 'Rating'
+			}
+		};
+
+		var chart = new google.visualization.LineChart(document.getElementById('rating_over_time'));
+		chart.draw(data, options);
+    }
+
+</script>
 @endsection
