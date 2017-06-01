@@ -116,7 +116,7 @@
                                     <td>{{ $i++ }}</td>
                                     <td><a href="{{ url('users/' . $user->id ) }}">{{ $user->name  }}</a></td>
                                     <td>{{ $user->elo_rating }}</td>
-                                    <td>{{ $user->wins + $user->lossess }}</td>
+                                    <td>{{ $user->wins + $user->losses }}</td>
                                     <td>{{ $user->wins }}</td>
                                     <td>{{ $user->losses }}</td>
                                     <td>{{ $user->goals_for }}</td>
