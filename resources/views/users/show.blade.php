@@ -114,18 +114,19 @@
 
 	function drawChart() {
 		var data = new google.visualization.DataTable();
-		data.addColumn('date', 'X');
+		data.addColumn('number', 'Game #');
 		data.addColumn('number', 'Rating');
 
 		data.addRows([
 			@foreach($ratingOverTime as $r)
-				[new Date({{ $r['date']->format('Y') }}, {{ $r['date']->format('m') - 1 }}, {{ $r['date']->format('d') }}), {{ $r['rating'] }}],
+				[{{ $r['i'] }}, {{ $r['rating'] }}],
 			@endforeach
+			[{{ $r['i'] + 1 }}, {{ $user->elo_rating }}]
 		]);
 
 		var options = {
 			hAxis: {
-		  		title: 'Time'
+		  		title: 'Games played'
 			},
 			vAxis: {
 		  		title: 'Rating'

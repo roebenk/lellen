@@ -35,15 +35,19 @@ class User extends Authenticatable
         return $this->goals_for - $this->goals_against;
     }
 
-    public function games($limit = 10) {
+    public function games($limit = 10, $order = 'desc') {
 
-        return Game::where('player_a1_id', $this->id)
+        $g = Game::where('player_a1_id', $this->id)
                     ->orWhere('player_a2_id', $this->id)
                     ->orWhere('player_b1_id', $this->id)
                     ->orWhere('player_b2_id', $this->id)
-                    ->orderBy('created_at', 'desc')
-                    ->limit($limit)
-                    ->get();
+                    ->orderBy('created_at', $order);
+                    
+        if($limit != false) {
+            $g->limit($limit);
+        }
+
+        return $g->get();
 
 
 

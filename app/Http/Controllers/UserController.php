@@ -23,29 +23,31 @@ class UserController extends Controller
         $user = User::find($id);
 
         if($user) {
-            $games = $user->games();
+            $games = $user->games(false, 'asc');
             $data['games'] = $games;
         }
 
-
         $ratingOverTime = [];
+        $i = 1;
         foreach($data['games'] as $game) {
-            if(Auth::user()->id == $game->player_a1_id) {
+            if($user->id == $game->player_a1_id) {
                 $r = $game->player_a1_rating;
-            } elseif(Auth::user()->id == $game->player_a2_id) {
+            } elseif($user->id == $game->player_a2_id) {
                 $r = $game->player_a2_rating;
-            } elseif(Auth::user()->id == $game->player_b1_id) {
+            } elseif($user->id == $game->player_b1_id) {
                 $r = $game->player_b1_rating;
-            } elseif(Auth::user()->id == $game->player_b2_id) {
+            } elseif($user->id == $game->player_b2_id) {
                 $r = $game->player_b2_rating;
             }
 
             $ratingOverTime[] = [
+                'i' => $i++,
                 'date' => $game->created_at,
                 'rating' => $r
             ];
 
         }
+
 
         $data['ratingOverTime'] = $ratingOverTime;
         $data['users'] = User::all()->keyBy('id');
