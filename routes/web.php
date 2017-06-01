@@ -20,6 +20,7 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::resource('games', 'GameController', ['only' => ['index', 'create', 'store']]);
 	Route::resource('users', 'UserController', ['only' => ['index', 'show', 'edit', 'update']]);
 	Route::resource('achievements', 'AchievementController', ['only' => ['index']]);
-
+	Route::get('stats', 'StatsController@index');
+	
 	Route::get('test', 'HomeController@test');
 });

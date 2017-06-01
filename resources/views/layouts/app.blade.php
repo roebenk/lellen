@@ -49,6 +49,7 @@
                             <li><a href="{{ url('/games/create') }}">Add game</a></li>
                             <li><a href="{{ url('/games') }}">Game history</a></li>
                             <li><a href="{{ url('/achievements') }}">Achievements</a></li>
+                            <li><a href="{{ url('/stats') }}">Statistics</a></li>
 
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
