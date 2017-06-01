@@ -49,7 +49,31 @@ class User extends Authenticatable
 
         return $g->get();
 
+    }
 
+    public function form($limit = 5) {
+        $games = $this->games($limit, 'desc');
+
+        $form = [];
+        foreach($games as $g) {
+            $f = ['game' => $g];
+            if($g->player_a1_id == $this->id || $g->player_a2_id == $this->id) {
+                if($g->score_a > $g->score_b) {
+                    $f['win'] = true;
+                } else {
+                    $f['win'] = false;
+                }
+            } else {
+                if($g->score_a > $g->score_b) {
+                    $f['win'] = false;
+                } else {
+                    $f['win'] = true;
+                }
+            }
+            $form[] = $f;
+        }
+
+        return array_reverse($form);
 
     }
 

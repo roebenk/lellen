@@ -100,11 +100,13 @@
                                     <th style="width: 30px">#</th>
                                     <th>Name</th>
                                     <th>Rating</th>
+                                    <th>P</th>
                                     <th>W</th>
                                     <th>L</th>
                                     <th>F</th>
                                     <th>A</th>
                                     <th>GD</th>
+                                    <th></th>
                                 </tr>
                             </thead>
 
@@ -114,11 +116,17 @@
                                     <td>{{ $i++ }}</td>
                                     <td><a href="{{ url('users/' . $user->id ) }}">{{ $user->name  }}</a></td>
                                     <td>{{ $user->elo_rating }}</td>
+                                    <td>{{ $user->wins + $user->lossess }}</td>
                                     <td>{{ $user->wins }}</td>
                                     <td>{{ $user->losses }}</td>
                                     <td>{{ $user->goals_for }}</td>
                                     <td>{{ $user->goals_against }}</td>
                                     <td>{{ $user->getGoalsDifference() }}</td>
+                                    <td>
+                                        @foreach($user->form() as $f)
+                                            <div data-toggle="tooltip" title="{{ $f['game']->score_a . ' - ' . $f['game']->score_b }} | Played {{ $f['game']->created_at->diffForHumans() }}" style="width: 10px; height: 10px; display: inline-block; vertical-align: middle; background: {{ $f['win'] ? 'green' : 'red' }}"></div>
+                                        @endforeach
+                                    </td>
                                 </tr>
                             @endforeach
 
@@ -130,4 +138,12 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('extra-scripts')
+<script>
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
+});
+</script>
 @endsection

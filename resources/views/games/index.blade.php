@@ -29,7 +29,10 @@
                             <?php $i = 1; ?>
                             @foreach($games as $game)
                                 <tr>
-                                    <td class="text-right"><a href="{{ url('users/' . $game->player_a1_id ) }}">{{ $users->get($game->player_a1_id)->name }}</a> &amp; <a href="{{ url('users/' . $game->player_a2_id ) }}">{{ $users->get($game->player_a2_id)->name }}</a></td>
+                                    <td class="text-right">
+                                        <a href="{{ url('users/' . $game->player_a1_id ) }}">{{ $users->get($game->player_a1_id)->name }}</a> &amp;
+                                        <a href="{{ url('users/' . $game->player_a2_id ) }}">{{ $users->get($game->player_a2_id)->name }}</a>
+                                    </td>
                                     <td class="text-right">{{ $game->score_a }}</td>
                                     <td class="text-center">-</td>
                                     <td>{{ $game->score_b }}</td>
