@@ -106,7 +106,7 @@
                                     <th>F</th>
                                     <th>A</th>
                                     <th>GD</th>
-                                    <th></th>
+                                    <th>Form</th>
                                 </tr>
                             </thead>
 
@@ -124,7 +124,7 @@
                                     <td>{{ $user->getGoalsDifference() }}</td>
                                     <td>
                                         @foreach($user->form() as $f)
-                                            <div data-toggle="tooltip" title="{{ $f['game']->score_a . ' - ' . $f['game']->score_b }} | Played {{ $f['game']->created_at->diffForHumans() }}" style="width: 10px; height: 10px; display: inline-block; vertical-align: middle; background: {{ $f['win'] ? 'green' : 'red' }}"></div>
+                                            <div data-toggle="tooltip" title="{{ $f['game']->score_a . ' - ' . $f['game']->score_b }} | Played {{ $f['game']->created_at->diffForHumans() }}" style="width: 10px; height: 10px; display: inline-block; vertical-align: middle; background: {{ $f['win'] ? '#3c763d' : '#a94442' }}"></div>
                                         @endforeach
                                     </td>
                                 </tr>
