@@ -30,7 +30,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        <span>KPMG</span> Cyber Lellen.nl
+                        <span>Cyber</span> Lellen.nl
                     </a>
                 </div>
 

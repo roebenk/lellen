@@ -17,5 +17,16 @@
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+    
+    # redirect http://www.example.com to https://www.example.com
+    RewriteCond %{HTTP_HOST} !=localhost
+    RewriteCond %{HTTPS} off
+    RewriteCond %{HTTP_HOST} ^www\. [NC]
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+    # redirect http(s)://example.com to https://www.example.com
+    RewriteCond %{HTTP_HOST} !=localhost
+    RewriteCond %{HTTP_HOST} !^www\. [NC]
+    RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 
 </IfModule>

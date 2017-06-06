@@ -6,6 +6,25 @@ use Illuminate\Database\Eloquent\Model;
 
 
 class Game extends Model {
+
+    public function isWin($user_id) {
+        if($this->player_a1_id == $user_id || $this->player_a2_id == $user_id){
+            if($this->score_a > $this->score_b) {
+                $this->win = true;
+            } else {
+                $this->win = false;
+            }
+        } else {
+            if($this->score_a > $this->score_b) {
+               $this->win = false;
+            } else {
+                $this->win = true;
+            }
+        }
+
+        return $this->win;
+
+    }
     
     public static function addGame($created_by, $player_a1, $player_a2, $player_b1, $player_b2, $score_a, $score_b, $matchID = false) {
 

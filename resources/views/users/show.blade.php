@@ -65,12 +65,14 @@
 	                    	<table class="table table-striped table-condensed">
 
 	                            <tr>
+	                            	<th>#</th>
 	                                <th class="text-right">Team 1</th>
 	                                <th class="text-right">&nbsp;</th>
 	                                <th class="text-center">-</th>
 	                                <th>&nbsp;</th>
 	                                <th>Team 2</th>
 	                                <th>Played on</th>
+	                                <th></th>
 	                            </tr>
 
 	                            @if(count($games) == 0) 
@@ -79,16 +81,20 @@
 		                            </tr>
 	                            @endif
 
-	                            <?php $i = 1; ?>
+	                            <?php $i = count($games); ?>
 	                            @foreach($games as $game)
 	                            <?php // var_dump($game); continue; ?>
 	                                <tr>
+	                                	<td>{{ $i-- }}</td>
 	                                    <td class="text-right"><a href="{{ url('users/' . $game->player_a1_id ) }}">{{ $users->get($game->player_a1_id)->name }}</a> &amp; <a href="{{ url('users/' . $game->player_a2_id ) }}">{{ $users->get($game->player_a2_id)->name }}</a></td>
 	                                    <td class="text-right">{{ $game->score_a }}</td>
 	                                    <td class="text-center">-</td>
 	                                    <td>{{ $game->score_b }}</td>
 	                                    <td><a href="{{ url('users/' . $game->player_b1_id ) }}">{{ $users->get($game->player_b1_id)->name }}</a> &amp; <a href="{{ url('users/' . $game->player_b2_id ) }}">{{ $users->get($game->player_b2_id)->name }}</a></td>
 	                                    <td>{{ $game->created_at->tz('Europe/Amsterdam')->format('d-m-Y \a\t H:i') }}</td>
+	                                    <td>
+	                                    	<div style="width: 10px; height: 10px; display: inline-block; vertical-align: middle; background: {{ $game->isWin($user->id) ? '#3c763d' : '#a94442' }}"></div>
+	                                    </td>
 	                                </tr>
 	                            @endforeach
 
