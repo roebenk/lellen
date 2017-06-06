@@ -23,13 +23,17 @@ class UserController extends Controller
         $user = User::find($id);
 
         if($user) {
-            $games = $user->games(false, 'asc');
+            $games = $user->games(false, 'desc');
             $data['games'] = $games;
         }
 
         $ratingOverTime = [];
         $i = 1;
-        foreach($data['games'] as $game) {
+
+
+        $_games = $data['games']->reverse();
+
+        foreach($_games as $game) {
             if($user->id == $game->player_a1_id) {
                 $r = $game->player_a1_rating;
             } elseif($user->id == $game->player_a2_id) {

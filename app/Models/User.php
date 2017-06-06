@@ -47,7 +47,10 @@ class User extends Authenticatable
             $g->limit($limit);
         }
 
-        return $g->get();
+
+        $g = $g->get();
+
+        return $g;
 
     }
 
